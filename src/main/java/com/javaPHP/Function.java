@@ -5,4 +5,12 @@ public class Function {
         System.out.println(str);
     }
 
+    public static void var_dump(Object obj) {
+        System.out.println(obj);
+    }
+
+    public static void print_r(Object obj) {
+        System.out.println(obj);
+    }
+
 }
