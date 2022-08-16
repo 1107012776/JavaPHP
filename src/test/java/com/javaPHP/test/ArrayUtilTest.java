@@ -7,13 +7,8 @@ import com.javaPHP.*;
 public class ArrayUtilTest {
 
     @org.junit.Test
-    public void testAdd() {
-        System.out.println("hahah");
-    }
-
-    @org.junit.Test
     public void testEcho() {
-        PHP.function.echo("asdasdasd");
+        PHP.function.echo("hello world");
     }
 
     @org.junit.Test
