@@ -18,4 +18,9 @@ public class ArrayUtilTest {
         String[] arr = new String[]{"a", "b", "c"};
         PHP.function.print_r(PHP.array.in_array("a", arr));
     }
+
+    @org.junit.Test
+    public void testRelpace() {
+        PHP.function.print_r(PHP.function.str_replace("a", "b", "abcabc"));
+    }
 }

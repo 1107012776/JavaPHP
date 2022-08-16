@@ -13,4 +13,8 @@ public class Function {
         System.out.println(obj);
     }
 
+    public String str_replace(String oldStr, String newStr, String targetValue) {
+        return targetValue.replace(oldStr, newStr);
+    }
+
 }
