@@ -1,9 +1,9 @@
-package com.javaPHP;
+package com.javaPHP.base;
 
 import java.util.Arrays;
 
 public class Array {
-    public static boolean in_array(String targetValue, String[] arr){
+    public boolean in_array(String targetValue, String[] arr) {
         return Arrays.asList(arr).contains(targetValue);
     }
 }
