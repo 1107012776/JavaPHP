@@ -1,4 +1,4 @@
-package com.utils;
+package com.javaPHP.utils;
 
 
 import java.util.*;
