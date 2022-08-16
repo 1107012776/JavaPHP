@@ -23,4 +23,13 @@ public class ArrayUtilTest {
     public void testRelpace() {
         PHP.function.print_r(PHP.function.str_replace("a", "b", "abcabc"));
     }
+
+
+    @org.junit.Test
+    public void testArrayMerge() {
+        String[] arr1 = new String[]{"a", "b", "c"};
+        String[] arr2 = new String[]{"a", "b", "c", "d"};
+        String[] arr3 = (String[])PHP.array.array_merge(arr1, arr2);
+        PHP.function.print_r(arr3);
+    }
 }
