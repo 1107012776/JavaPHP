@@ -4,7 +4,7 @@
 
 # 基础
 
-```
+```java
 package com.javaPHP.test;
 
 import static org.junit.Assert.*;
