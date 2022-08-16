@@ -16,7 +16,7 @@ public class ArrayUtilTest {
     @org.junit.Test
     public void testInArray() {
         String[] arr = new String[]{"a", "b", "c"};
-        PHP.function.print_r(PHP.array.in_array("a", arr));
+        PHP.function.print_r(PHP.function.in_array("a", arr));
     }
 
     @org.junit.Test
@@ -29,7 +29,7 @@ public class ArrayUtilTest {
     public void testArrayMerge() {
         String[] arr1 = new String[]{"a", "b", "c"};
         String[] arr2 = new String[]{"a", "b", "c", "d"};
-        String[] arr3 = (String[])PHP.array.array_merge(arr1, arr2);
+        String[] arr3 = (String[])PHP.function.array_merge(arr1, arr2);
         PHP.function.print_r(arr3);
     }
 }
