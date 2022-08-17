@@ -9,6 +9,7 @@ package com.javaPHP.test;
 
 import static org.junit.Assert.*;
 
+import static com.javaPHP.PHP.*;
 import com.javaPHP.*;
 
 public class DevTest {
@@ -18,6 +19,7 @@ public class DevTest {
         PHP.echo("hello world");
         PHP.print_r("hello world");
         PHP.var_dump("hello world");
+        var_dump("hello world");
     }
 
     @org.junit.Test
