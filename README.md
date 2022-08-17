@@ -15,20 +15,20 @@ public class ArrayUtilTest {
 
     @org.junit.Test
     public void testEcho() {
-        PHP.function.echo("hello world");
-        PHP.function.print_r("hello world");
-        PHP.function.var_dump("hello world");
+        PHP.echo("hello world");
+        PHP.print_r("hello world");
+        PHP.var_dump("hello world");
     }
 
     @org.junit.Test
     public void testInArray() {
         String[] arr = new String[]{"a", "b", "c"};
-        PHP.function.print_r(PHP.function.in_array("a", arr));
+        PHP.print_r(PHP.in_array("a", arr));
     }
 
     @org.junit.Test
     public void testRelpace() {
-        PHP.function.print_r(PHP.function.str_replace("a", "b", "abcabc"));
+        PHP.print_r(PHP.str_replace("a", "b", "abcabc"));
     }
 
 
@@ -36,8 +36,8 @@ public class ArrayUtilTest {
     public void testArrayMerge() {
         String[] arr1 = new String[]{"a", "b", "c"};
         String[] arr2 = new String[]{"a", "b", "c", "d"};
-        String[] arr3 = (String[])PHP.function.array_merge(arr1, arr2);
-        PHP.function.print_r(arr3);
+        String[] arr3 = (String[]) PHP.array_merge(arr1, arr2);
+        PHP.print_r(arr3);
     }
 }
 ```
