@@ -9,8 +9,8 @@ public class PHP {
 
     protected static Array array = new Array();
 
-    public static void echo(String str) {
-        function.echo(str);
+    public static void echo(Object obj) {
+        function.echo(obj);
     }
 
     public static void var_dump(Object obj) {

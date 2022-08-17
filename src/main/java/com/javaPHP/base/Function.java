@@ -7,8 +7,8 @@ import java.util.Arrays;
 public class Function {
     public static Array array = new Array();
 
-    public void echo(String str) {
-        System.out.println(str);
+    public void echo(Object obj) {
+        System.out.println(obj);
     }
 
     public void var_dump(Object obj) {
