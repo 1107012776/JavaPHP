@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 import com.javaPHP.*;
 
-public class ArrayUtilTest {
+public class DevTest {
 
     @org.junit.Test
     public void testEcho() {
