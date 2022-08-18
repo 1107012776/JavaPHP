@@ -5,7 +5,7 @@
     <artifactId>javaPHP</artifactId>
     <packaging>jar</packaging>
     <version>1.4.0</version>
-    <name>JavaLearn</name>
+    <name>javaPHP</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
