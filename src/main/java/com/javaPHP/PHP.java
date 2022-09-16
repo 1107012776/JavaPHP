@@ -44,11 +44,11 @@ public class PHP {
         return fileUtil.readFileByBytes(path);
     }
 
-    public static boolean writeBytes(String path, byte[] data) {
-        return fileUtil.writeBytes(path, data);
-    }
-
     public static boolean file_put_contents(String path, String content) {
         return fileUtil.fileWriter(path, content);
+    }
+
+    public static boolean file_put_contents(String path, byte[] content) {
+        return fileUtil.writeBytes(path, content);
     }
 }

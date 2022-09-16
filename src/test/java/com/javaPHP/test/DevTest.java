@@ -54,7 +54,7 @@ public class DevTest {
         PHP.print_r(s);
         //图片
         content = PHP.readBytes("D:\\git-project\\JavaPHP\\20191210174232_297.jpg");
-        boolean create = PHP.writeBytes("D:\\git-project\\JavaPHP\\20191210174232_297_new.jpg", content);
+        boolean create = PHP.file_put_contents("D:\\git-project\\JavaPHP\\20191210174232_297_new.jpg", content);
         PHP.print_r(create);
     }
 }
