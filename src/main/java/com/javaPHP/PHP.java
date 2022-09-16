@@ -36,11 +36,11 @@ public class PHP {
         return array.array_merge(arr, arr1);
     }
 
-    public static String file_get_contents(String path){
+    public static String file_get_contents(String path) {
         return fileUtil.readFileByChars(path);
     }
 
-    public static boolean file_put_contents(String path, String content){
+    public static boolean file_put_contents(String path, String content) {
         return fileUtil.fileWriter(path, content);
     }
 }

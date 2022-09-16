@@ -3,6 +3,7 @@ package com.javaPHP.test;
 import static org.junit.Assert.*;
 
 import static com.javaPHP.PHP.*;
+
 import com.javaPHP.*;
 import com.javaPHP.base.*;
 
@@ -38,7 +39,7 @@ public class DevTest {
 
     @org.junit.Test
     public void testFileGetContents() {
-        String content = PHP.file_get_contents(this.getClass().getResource("/").getPath()+"/com/javaPHP/test/DevTest.class");
+        String content = PHP.file_get_contents(this.getClass().getResource("/").getPath() + "/com/javaPHP/test/DevTest.class");
         PHP.print_r(content);
         content = PHP.file_get_contents("D:\\git-project\\JavaPHP\\pom.xml");
         boolean create = PHP.file_put_contents("D:\\git-project\\JavaPHP\\pom1.xml", content);
