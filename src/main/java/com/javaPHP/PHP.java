@@ -2,12 +2,15 @@ package com.javaPHP;
 
 import com.javaPHP.base.Array;
 import com.javaPHP.base.Function;
+import com.javaPHP.base.FileUtil;
 
 public class PHP {
 
     protected static Function function = new Function();
 
     protected static Array array = new Array();
+
+    protected static FileUtil fileUtil = new FileUtil();
 
     public static void echo(Object obj) {
         function.echo(obj);
@@ -31,5 +34,9 @@ public class PHP {
 
     public static Object[] array_merge(Object[] arr, Object[] arr1) {
         return array.array_merge(arr, arr1);
+    }
+
+    public static String file_get_contents(String path){
+        return fileUtil.readFileByChars(path);
     }
 }

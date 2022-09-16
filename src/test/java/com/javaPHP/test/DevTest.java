@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import static com.javaPHP.PHP.*;
 import com.javaPHP.*;
+import com.javaPHP.base.*;
 
 public class DevTest {
 
@@ -33,5 +34,11 @@ public class DevTest {
         String[] arr2 = new String[]{"a", "b", "c", "d"};
         String[] arr3 = (String[]) PHP.array_merge(arr1, arr2);
         PHP.print_r(arr3);
+    }
+
+    @org.junit.Test
+    public void testFileGetContents() {
+        String content = PHP.file_get_contents("D:\\git-project\\JavaPHP\\src\\test\\java\\com\\javaPHP\\test\\DevTest.java");
+        PHP.print_r(content);
     }
 }
