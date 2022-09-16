@@ -48,7 +48,6 @@ public class DevTest {
 
     @org.junit.Test
     public void testReadBytes() {
-        //图片
         byte[] content = PHP.readBytes("D:\\git-project\\JavaPHP\\pom.xml");
         //Convert back to String
         String s = new String(content);
