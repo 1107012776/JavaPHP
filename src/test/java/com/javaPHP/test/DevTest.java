@@ -38,7 +38,10 @@ public class DevTest {
 
     @org.junit.Test
     public void testFileGetContents() {
-        String content = PHP.file_get_contents("D:\\git-project\\JavaPHP\\src\\test\\java\\com\\javaPHP\\test\\DevTest.java");
+        String content = PHP.file_get_contents(this.getClass().getResource("/").getPath()+"/com/javaPHP/test/DevTest.class");
         PHP.print_r(content);
+        content = PHP.file_get_contents("D:\\git-project\\JavaPHP\\pom.xml");
+        boolean create = PHP.file_put_contents("D:\\git-project\\JavaPHP\\pom1.xml", content);
+        PHP.print_r(create);
     }
 }

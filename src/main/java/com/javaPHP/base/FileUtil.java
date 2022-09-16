@@ -1,12 +1,14 @@
 package com.javaPHP.base;
+
 import java.io.*;
+
 //https://www.runoob.com/java/java-files-io.html
 public class FileUtil {
 
     /**
      * 以字节为单位读取文件，常用于读二进制文件，如图片、声音、影像等文件。
      */
-    public void readFileByBytes(String fileName) {
+/*    public void readFileByBytes(String fileName) {
         File f = new File(fileName);
         InputStream in = null;
         try {
@@ -21,7 +23,7 @@ public class FileUtil {
             // TODO: handle exception
             e.printStackTrace();
         }
-    }
+    }*/
 
     /**
      * 以字符为单位读取文件，常用于读文本，数字等类型的文件
@@ -49,4 +51,34 @@ public class FileUtil {
         }
         return content;
     }
+
+    public boolean fileWriter(String path, String content) {
+        try {
+
+
+            File file = new File(path);
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            //使用true，即进行append file
+
+            FileWriter fileWritter = new FileWriter(file.getName(), true);
+
+
+            fileWritter.write(content);
+
+            fileWritter.close();
+
+            return true;
+        } catch (IOException e) {
+
+            e.printStackTrace();
+            return false;
+
+        }
+    }
+
+
 }
