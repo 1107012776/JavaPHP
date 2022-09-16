@@ -8,22 +8,28 @@ public class FileUtil {
     /**
      * 以字节为单位读取文件，常用于读二进制文件，如图片、声音、影像等文件。
      */
-/*    public void readFileByBytes(String fileName) {
+    public byte[] readFileByBytes(String fileName) {
         File f = new File(fileName);
-        InputStream in = null;
+        InputStream inputStream = null;
         try {
-            System.out.println("以字节为单位读取文件内容，一次读一个字节：");
             // 一次读一个字节
-            in = new FileInputStream(f);
-            int tempbyte;
-            while ((tempbyte = in.read()) != -1) {
-                System.out.println(tempbyte);
+            inputStream = new FileInputStream(f);
+            byte[] buffer = new byte[1024];
+            int len = -1;
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            while ((len = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, len);
             }
+            outputStream.close();
+            inputStream.close();
+            return outputStream.toByteArray();
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
         }
-    }*/
+        return new byte[0];
+    }
+
 
     /**
      * 以字符为单位读取文件，常用于读文本，数字等类型的文件
@@ -77,6 +83,18 @@ public class FileUtil {
             e.printStackTrace();
             return false;
 
+        }
+    }
+
+    public boolean writeBytes(String path, byte[] content) {
+        try {
+            FileOutputStream outputStream = new FileOutputStream(new File(path));
+            outputStream.write(content);
+            outputStream.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
