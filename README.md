@@ -64,5 +64,17 @@ public class DevTest {
         boolean create = PHP.file_put_contents("D:\\git-project\\JavaPHP\\20191210174232_297_new.jpg", content);
         PHP.print_r(create);
     }
+
+    @org.junit.Test
+    public void testSubstr() {
+        String Str = new String("This is text");
+        PHP.print_r(PHP.substr(Str, 5));  //is text
+        PHP.print_r(PHP.substr(Str, 5, 5)); //is te
+        PHP.print_r(PHP.substr(Str, -1)); //t
+        PHP.print_r(PHP.substr(Str, -3, 1)); //e
+        PHP.print_r(PHP.substr(Str, -3, 2));  //ex
+        PHP.print_r(PHP.substr(Str, -4, 2));  //te
+        PHP.print_r(PHP.substr(Str, -4, -1)); //tex
+    }
 }
 ```

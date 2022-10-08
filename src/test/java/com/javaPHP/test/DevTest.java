@@ -61,15 +61,12 @@ public class DevTest {
     @org.junit.Test
     public void testSubstr() {
         String Str = new String("This is text");
-
-        PHP.print_r(PHP.substr(Str, 5));
-        PHP.print_r(PHP.substr(Str, 5, 5));
-        PHP.print_r(PHP.substr(Str, -1));
-        PHP.print_r(PHP.substr(Str, -3, 1));
-        PHP.print_r(PHP.substr(Str, -3, 2));
-        PHP.print_r(PHP.substr(Str, -4, 2));
-        PHP.print_r(PHP.substr(Str, -4, -1));
+        PHP.print_r(PHP.substr(Str, 5));  //is text
+        PHP.print_r(PHP.substr(Str, 5, 5)); //is te
+        PHP.print_r(PHP.substr(Str, -1)); //t
+        PHP.print_r(PHP.substr(Str, -3, 1)); //e
+        PHP.print_r(PHP.substr(Str, -3, 2));  //ex
+        PHP.print_r(PHP.substr(Str, -4, 2));  //te
+        PHP.print_r(PHP.substr(Str, -4, -1)); //tex
     }
-
-
 }
