@@ -51,4 +51,12 @@ public class PHP {
     public static boolean file_put_contents(String path, byte[] content) {
         return fileUtil.writeBytes(path, content);
     }
+
+    public static String substr(String oldStr, int beginIndex, int getLength) {
+        return function.substr(oldStr, beginIndex, getLength);
+    }
+
+    public static String substr(String oldStr, int beginIndex) {
+        return function.substr(oldStr, beginIndex);
+    }
 }

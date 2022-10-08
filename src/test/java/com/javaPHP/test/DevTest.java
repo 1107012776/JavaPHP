@@ -57,4 +57,14 @@ public class DevTest {
         boolean create = PHP.file_put_contents("D:\\git-project\\JavaPHP\\20191210174232_297_new.jpg", content);
         PHP.print_r(create);
     }
+
+    @org.junit.Test
+    public void testSubstr() {
+        String Str = new String("This is text");
+
+        PHP.print_r(PHP.substr(Str, 5));
+        PHP.print_r(PHP.substr(Str, 5, 5));
+    }
+
+
 }
