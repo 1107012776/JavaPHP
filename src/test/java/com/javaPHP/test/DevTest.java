@@ -53,8 +53,8 @@ public class DevTest {
         String s = new String(content);
         PHP.print_r(s);
         //图片
-        content = PHP.readBytes("D:\\git-project\\JavaPHP\\20191210174232_297.jpg");
-        boolean create = PHP.file_put_contents("D:\\git-project\\JavaPHP\\20191210174232_297_new.jpg", content);
+        content = PHP.readBytes("D:\\git-project\\JavaPHP\\test.png");
+        boolean create = PHP.file_put_contents("D:\\git-project\\JavaPHP\\test1.png", content);
         PHP.print_r(create);
     }
 
