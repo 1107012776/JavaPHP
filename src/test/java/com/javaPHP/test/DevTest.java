@@ -9,6 +9,8 @@ import com.javaPHP.base.*;
 
 public class DevTest {
 
+    public static String projectPath = "D:\\git-project\\JavaPHP";
+
     @org.junit.Test
     public void testEcho() {
         PHP.echo("hello world");
@@ -41,20 +43,20 @@ public class DevTest {
     public void testFileGetContents() {
         String content = PHP.file_get_contents(this.getClass().getResource("/").getPath() + "/com/javaPHP/test/DevTest.class");
         PHP.print_r(content);
-        content = PHP.file_get_contents("D:\\git-project\\JavaPHP\\pom.xml");
-        boolean create = PHP.file_put_contents("D:\\git-project\\JavaPHP\\pom1.xml", content);
+        content = PHP.file_get_contents(projectPath + "\\pom.xml");
+        boolean create = PHP.file_put_contents(projectPath + "\\pom1.xml", content);
         PHP.print_r(create);
     }
 
     @org.junit.Test
     public void testReadBytes() {
-        byte[] content = PHP.readBytes("D:\\git-project\\JavaPHP\\pom.xml");
+        byte[] content = PHP.readBytes(projectPath + "\\pom.xml");
         //Convert back to String
         String s = new String(content);
         PHP.print_r(s);
         //图片
-        content = PHP.readBytes("D:\\git-project\\JavaPHP\\test.png");
-        boolean create = PHP.file_put_contents("D:\\git-project\\JavaPHP\\test1.png", content);
+        content = PHP.readBytes(projectPath + "\\test.png");
+        boolean create = PHP.file_put_contents(projectPath + "\\test1.png", content);
         PHP.print_r(create);
     }
 
