@@ -30,13 +30,13 @@ public class Function {
         }
         if (beginIndex < 0) {
             int absLength = Math.abs(beginIndex);
-            beginIndex = length - 1 - absLength;
+            beginIndex = length - absLength;
             if (getLength < 0) {
                 getLength = absLength + getLength;
             }
         } else {
             if (getLength < 0) {
-                getLength = length - 1 - beginIndex + getLength;
+                getLength = length - beginIndex + getLength;
             }
         }
         return oldStr.substring(beginIndex, beginIndex + getLength);
@@ -49,7 +49,7 @@ public class Function {
         }
         if (beginIndex < 0) {
             int getLength = Math.abs(beginIndex);
-            beginIndex = length - 1 - getLength;
+            beginIndex = length - getLength;
         }
         return oldStr.substring(beginIndex);
     }

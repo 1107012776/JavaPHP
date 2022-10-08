@@ -64,6 +64,11 @@ public class DevTest {
 
         PHP.print_r(PHP.substr(Str, 5));
         PHP.print_r(PHP.substr(Str, 5, 5));
+        PHP.print_r(PHP.substr(Str, -1));
+        PHP.print_r(PHP.substr(Str, -3, 1));
+        PHP.print_r(PHP.substr(Str, -3, 2));
+        PHP.print_r(PHP.substr(Str, -4, 2));
+        PHP.print_r(PHP.substr(Str, -4, -1));
     }
 
 
