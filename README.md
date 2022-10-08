@@ -1,6 +1,22 @@
 # JavaPHP
 用Java封装实现通用的PHP方法和函数或者类，便于PHP程序员开发Java项目
 
+# MAVEN引入(示例如下)
+```
+    <dependencies>
+        <dependency>
+            <groupId>com</groupId>
+            <artifactId>javaPHP</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+    </dependencies>
+    <repositories>
+        <repository>
+            <id>javaPHP</id>
+            <url>https://raw.githubusercontent.com/1107012776/maven-repo/master/repository/</url>
+        </repository>
+    </repositories>
+```
 
 # 基础
 
@@ -78,3 +94,4 @@ public class DevTest {
     }
 }
 ```
+
