@@ -11,19 +11,23 @@ import java.net.URLConnection;
 import java.util.*;
 import java.util.Map;
 import java.util.HashMap;
+import java.net.URLEncoder;
+
 public class Http {
 
-    private List<Map<String,String>>  headers;
+    private List<Map<String, String>> headers;
 
-    public Http(){
-        headers = new ArrayList<Map<String,String>>();
+    public Http() {
+        headers = new ArrayList<Map<String, String>>();
     }
+
     /**
      * Http get请求
+     *
      * @param httpUrl 连接
      * @return 响应数据
      */
-    public  String doGet(String httpUrl){
+    public String doGet(String httpUrl) {
         //链接
         HttpURLConnection connection = null;
         InputStream is = null;
@@ -76,11 +80,12 @@ public class Http {
 
     /**
      * Http post请求
+     *
      * @param httpUrl 连接
-     * @param param 参数
+     * @param param   参数
      * @return
      */
-    public  String doPost(String httpUrl, Object param) {
+    public String doPost(String httpUrl, Object param) {
         StringBuffer result = new StringBuffer();
         //连接
         HttpURLConnection connection = null;
@@ -107,19 +112,19 @@ public class Http {
             connection.setRequestProperty("connection", "Keep-Alive");
             connection.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)");
 //          connection.setRequestProperty("Content-Type", "application/json;charset=utf-8");
-            for(Map<String, String> map :headers) {
+            for (Map<String, String> map : headers) {
                 for (String key : map.keySet()) {
                     connection.setRequestProperty(key, map.get(key));
                 }
             }
             String paramBuild = "";
             if (param instanceof Map) {
-                Map<String,String> paramMap = (Map<String,String>)param;
+                Map<String, String> paramMap = (Map<String, String>) param;
                 for (String key : paramMap.keySet()) {
-                    if(paramBuild.equals("")){
-                        paramBuild += key+"="+paramMap.get(key);
-                    }else{
-                        paramBuild += "&"+key+"="+paramMap.get(key);
+                    if (paramBuild.equals("")) {
+                        paramBuild += key + "=" + URLEncoder.encode(paramMap.get(key));
+                    } else {
+                        paramBuild += "&" + key + "=" + URLEncoder.encode(paramMap.get(key));
                     }
                 }
             }
@@ -153,21 +158,21 @@ public class Http {
             e.printStackTrace();
         } finally {
             //关闭连接
-            if(br!=null){
+            if (br != null) {
                 try {
                     br.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            if(os!=null){
+            if (os != null) {
                 try {
                     os.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            if(is!=null){
+            if (is != null) {
                 try {
                     is.close();
                 } catch (IOException e) {
@@ -180,7 +185,7 @@ public class Http {
         return result.toString();
     }
 
-    public boolean setHeaders(Map<String,String> mapHeader){
+    public boolean setHeaders(Map<String, String> mapHeader) {
         return headers.add(mapHeader);
     }
 

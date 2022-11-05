@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class DevTest {
 
-    public static String projectPath = "D:\\git-project\\JavaPHP";
+    public static String projectPath = "E:\\git-project\\JavaPHP";
 
     @org.junit.Test
     public void testEcho() {
@@ -78,13 +78,13 @@ public class DevTest {
     @org.junit.Test
     public void testHttpClient() {
         Http client = PHP.createHttpClient();
-        Map<String,String> header = new HashMap<String,String>();
-        Map<String,Object> param = new HashMap<String,Object>();
-        param.put("username","zhan");
-        param.put("password","mima");
-        header.put("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
+        Map<String, String> header = new HashMap<String, String>();
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("username", PHP.file_get_contents(projectPath + "\\dev\\username.txt"));
+        param.put("password", PHP.file_get_contents(projectPath + "\\dev\\password.txt"));
+        header.put("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
         client.setHeaders(header);
-        String message = client.doPost("https://baidu.com/login", param);
+        String message = client.doPost(PHP.file_get_contents(projectPath + "\\dev\\url.txt"), param);
         System.out.println(message);
     }
 }
