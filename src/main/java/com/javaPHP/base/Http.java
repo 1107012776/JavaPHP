@@ -80,7 +80,7 @@ public class Http {
      * @param param 参数
      * @return
      */
-    public  String doPost(String httpUrl, Map<String,Object> param) {
+    public  String doPost(String httpUrl, Object param) {
         StringBuffer result = new StringBuffer();
         //连接
         HttpURLConnection connection = null;
@@ -113,11 +113,14 @@ public class Http {
                 }
             }
             String paramBuild = "";
-            for (String key : param.keySet()) {
-                if(paramBuild.equals("")){
-                    paramBuild += key+"="+param.get(key);
-                }else{
-                    paramBuild += "&"+key+"="+param.get(key);
+            if (param instanceof Map) {
+                Map<String,String> paramMap = (Map<String,String>)param;
+                for (String key : paramMap.keySet()) {
+                    if(paramBuild.equals("")){
+                        paramBuild += key+"="+paramMap.get(key);
+                    }else{
+                        paramBuild += "&"+key+"="+paramMap.get(key);
+                    }
                 }
             }
             //拼装参数
