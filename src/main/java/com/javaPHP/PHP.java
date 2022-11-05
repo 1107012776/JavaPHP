@@ -3,6 +3,7 @@ package com.javaPHP;
 import com.javaPHP.base.Array;
 import com.javaPHP.base.Function;
 import com.javaPHP.base.FileUtil;
+import com.javaPHP.base.Http;
 
 public class PHP {
 
@@ -58,5 +59,9 @@ public class PHP {
 
     public static String substr(String oldStr, int beginIndex) {
         return function.substr(oldStr, beginIndex);
+    }
+
+    public static Http createHttpClient() {
+        return new Http();
     }
 }

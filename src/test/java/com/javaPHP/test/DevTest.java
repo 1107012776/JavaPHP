@@ -7,6 +7,9 @@ import static com.javaPHP.PHP.*;
 import com.javaPHP.*;
 import com.javaPHP.base.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DevTest {
 
     public static String projectPath = "D:\\git-project\\JavaPHP";
@@ -70,5 +73,18 @@ public class DevTest {
         PHP.print_r(PHP.substr(Str, -3, 2));  //ex
         PHP.print_r(PHP.substr(Str, -4, 2));  //te
         PHP.print_r(PHP.substr(Str, -4, -1)); //tex
+    }
+
+    @org.junit.Test
+    public void testHttpClient() {
+        Http client = PHP.createHttpClient();
+        Map<String,String> header = new HashMap<String,String>();
+        Map<String,Object> param = new HashMap<String,Object>();
+        param.put("username","zhan");
+        param.put("password","mima");
+        header.put("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
+        client.setHeaders(header);
+        String message = client.doPost("https://baidu.com/login", param);
+        System.out.println(message);
     }
 }
