@@ -80,11 +80,11 @@ public class Http {
         for (String key : responseHeaders.keySet()) {
             if (name == null) {
                 for (String map : responseHeaders.get(key)) {
-                    return map;
+                    return map.toString();
                 }
             } else {
                 for (String map : responseHeaders.get(name)) {
-                    return map;
+                    return map.toString();
                 }
             }
         }
