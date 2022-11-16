@@ -30,7 +30,12 @@ import static com.javaPHP.PHP.*;
 import com.javaPHP.*;
 import com.javaPHP.base.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DevTest {
+
+    public static String projectPath = "E:\\git-project\\JavaPHP";
 
     @org.junit.Test
     public void testEcho() {
@@ -64,20 +69,20 @@ public class DevTest {
     public void testFileGetContents() {
         String content = PHP.file_get_contents(this.getClass().getResource("/").getPath() + "/com/javaPHP/test/DevTest.class");
         PHP.print_r(content);
-        content = PHP.file_get_contents("D:\\git-project\\JavaPHP\\pom.xml");
-        boolean create = PHP.file_put_contents("D:\\git-project\\JavaPHP\\pom1.xml", content);
+        content = PHP.file_get_contents(projectPath + "\\pom.xml");
+        boolean create = PHP.file_put_contents(projectPath + "\\pom1.xml", content);
         PHP.print_r(create);
     }
 
     @org.junit.Test
     public void testReadBytes() {
-        byte[] content = PHP.readBytes("D:\\git-project\\JavaPHP\\pom.xml");
+        byte[] content = PHP.readBytes(projectPath + "\\pom.xml");
         //Convert back to String
         String s = new String(content);
         PHP.print_r(s);
         //图片
-        content = PHP.readBytes("D:\\git-project\\JavaPHP\\20191210174232_297.jpg");
-        boolean create = PHP.file_put_contents("D:\\git-project\\JavaPHP\\20191210174232_297_new.jpg", content);
+        content = PHP.readBytes(projectPath + "\\test.png");
+        boolean create = PHP.file_put_contents(projectPath + "\\test1.png", content);
         PHP.print_r(create);
     }
 
@@ -91,6 +96,34 @@ public class DevTest {
         PHP.print_r(PHP.substr(Str, -3, 2));  //ex
         PHP.print_r(PHP.substr(Str, -4, 2));  //te
         PHP.print_r(PHP.substr(Str, -4, -1)); //tex
+    }
+
+    @org.junit.Test
+    public void testHttpClient() {
+
+        Map<String, String> header = new HashMap<String, String>();
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("username", PHP.file_get_contents(projectPath + "\\dev\\username.txt"));
+        param.put("password", PHP.file_get_contents(projectPath + "\\dev\\password.txt"));
+        header.put("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+        String message = "";
+/*      message = client.doPost(PHP.file_get_contents(projectPath + "\\dev\\url.txt"), param);
+        PHP.print_r(message);
+        client = PHP.createHttpClient();
+        message = client.doGet(PHP.file_get_contents(projectPath + "\\dev\\first_url.txt"));
+        PHP.print_r(message);*/
+        Http client = PHP.createHttpClient();
+        client.setHeaders(header);
+        message = client.doPost(PHP.file_get_contents(projectPath + "\\dev\\cansu.txt"), param);
+        PHP.print_r(message);
+        client = PHP.createHttpClient();
+        header = new HashMap<String, String>();
+        header.put("Content-Type", "application/json; charset=UTF-8");
+        client.setHeaders(header);
+        message = client.doPut(PHP.file_get_contents(projectPath + "\\dev\\cansu.txt"), param);
+        PHP.print_r(message);
+        PHP.print_r(client.getResponseHeaders());
+        PHP.print_r(client.getResponseHeaders("Server"));
     }
 }
 ```
