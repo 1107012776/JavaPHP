@@ -95,11 +95,11 @@ public class Http {
         for (String key : oldResponseHeaders.keySet()) {
             if (name == null) {
                 for (String map : oldResponseHeaders.get(key)) {
-                    return map;
+                    return map.toString();
                 }
             } else {
                 for (String map : oldResponseHeaders.get(name)) {
-                    return map;
+                    return map.toString();
                 }
             }
         }
