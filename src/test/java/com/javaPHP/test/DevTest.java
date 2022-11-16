@@ -99,6 +99,8 @@ public class DevTest {
         client.setHeaders(header);
         message = client.doPut(PHP.file_get_contents(projectPath + "\\dev\\cansu.txt"), param);
         PHP.print_r(message);
+        PHP.print_r(client.getResponseHeaders());
+        PHP.print_r(client.getResponseHeaders("Server"));
     }
 }
 

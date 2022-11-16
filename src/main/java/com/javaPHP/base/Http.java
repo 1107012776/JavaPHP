@@ -17,6 +17,10 @@ public class Http {
 
     private List<Map<String, String>> headers;
 
+    private Integer responseCode;
+
+    private Map<String, List<String>> responseHeaders;
+
     public Http() {
         headers = new ArrayList<Map<String, String>>();
     }
@@ -61,6 +65,30 @@ public class Http {
      */
     public String doPost(String httpUrl, Object param) {
         return doCommon(httpUrl, param, "POST");
+    }
+
+    public Integer getResponseCode() {
+        return responseCode;
+    }
+
+    public Map<String, List<String>> getResponseHeaders() {
+        return responseHeaders;
+    }
+
+
+    public String getResponseHeaders(String name) {
+        for (String key : responseHeaders.keySet()) {
+            if (name == null) {
+                for (String map : responseHeaders.get(key)) {
+                    return map;
+                }
+            } else {
+                for (String map : responseHeaders.get(name)) {
+                    return map;
+                }
+            }
+        }
+        return "";
     }
 
     public String doCommon(String httpUrl, Object param, String method) {
@@ -145,7 +173,8 @@ public class Http {
             //开启连接
             //connection.connect();
             //读取响应
-            if (connection.getResponseCode() == 200) {
+            responseCode = connection.getResponseCode();
+            if (responseCode == 200) {
                 is = connection.getInputStream();
                 if (null != is) {
 //                    br = new BufferedReader(new InputStreamReader(is, "GBK"));
@@ -157,7 +186,8 @@ public class Http {
                     }
                 }
             }
-
+//            System.out.println(connection.getHeaderField("Server"));
+            responseHeaders = connection.getHeaderFields();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
