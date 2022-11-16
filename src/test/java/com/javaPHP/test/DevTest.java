@@ -85,6 +85,9 @@ public class DevTest {
         header.put("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
         client.setHeaders(header);
         String message = client.doPost(PHP.file_get_contents(projectPath + "\\dev\\url.txt"), param);
-        System.out.println(message);
+        PHP.print_r(message);
+        client = PHP.createHttpClient();
+        message = client.doGet(PHP.file_get_contents(projectPath + "\\dev\\first_url.txt"));
+        PHP.print_r(message);
     }
 }

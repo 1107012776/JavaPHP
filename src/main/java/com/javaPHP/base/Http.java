@@ -28,54 +28,28 @@ public class Http {
      * @return 响应数据
      */
     public String doGet(String httpUrl) {
-        //链接
-        HttpURLConnection connection = null;
-        InputStream is = null;
-        BufferedReader br = null;
-        StringBuffer result = new StringBuffer();
-        try {
-            //创建连接
-            URL url = new URL(httpUrl);
-            connection = (HttpURLConnection) url.openConnection();
-            //设置请求方式
-            connection.setRequestMethod("GET");
-            //设置连接超时时间
-            connection.setReadTimeout(15000);
-            //开始连接
-            connection.connect();
-            //获取响应数据
-            if (connection.getResponseCode() == 200) {
-                //获取返回的数据
-                is = connection.getInputStream();
-                if (null != is) {
-                    br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-                    String temp = null;
-                    while (null != (temp = br.readLine())) {
-                        result.append(temp);
-                    }
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (null != br) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (null != is) {
-                try {
-                    is.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            //关闭远程连接
-            connection.disconnect();
-        }
-        return result.toString();
+        return doCommon(httpUrl, null, "GET");
+    }
+
+    /**
+     * Http put请求
+     *
+     * @param httpUrl 连接
+     * @return 响应数据
+     */
+    public String doPut(String httpUrl, Object param) {
+        return doCommon(httpUrl, param, "PUT");
+    }
+
+
+    /**
+     * Http delete请求
+     *
+     * @param httpUrl 连接
+     * @return 响应数据
+     */
+    public String doDelete(String httpUrl, Object param) {
+        return doCommon(httpUrl, param, "DELETE");
     }
 
     /**
@@ -86,6 +60,10 @@ public class Http {
      * @return
      */
     public String doPost(String httpUrl, Object param) {
+        return doCommon(httpUrl, param, "POST");
+    }
+
+    public String doCommon(String httpUrl, Object param, String method) {
         StringBuffer result = new StringBuffer();
         //连接
         HttpURLConnection connection = null;
@@ -98,7 +76,7 @@ public class Http {
             //创建连接
             connection = (HttpURLConnection) url.openConnection();
             //设置请求方法
-            connection.setRequestMethod("POST");
+            connection.setRequestMethod(method);
             //设置连接超时时间
             connection.setConnectTimeout(15000);
             //设置读取超时时间
@@ -118,7 +96,7 @@ public class Http {
                 }
             }
             String paramBuild = "";
-            if (param instanceof Map) {
+            if (param != null && param instanceof Map) {
                 Map<String, String> paramMap = (Map<String, String>) param;
                 for (String key : paramMap.keySet()) {
                     if (paramBuild.equals("")) {
@@ -143,7 +121,8 @@ public class Http {
             if (connection.getResponseCode() == 200) {
                 is = connection.getInputStream();
                 if (null != is) {
-                    br = new BufferedReader(new InputStreamReader(is, "GBK"));
+//                    br = new BufferedReader(new InputStreamReader(is, "GBK"));
+                    br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
                     String temp = null;
                     while (null != (temp = br.readLine())) {
                         result.append(temp);
