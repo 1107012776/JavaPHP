@@ -91,6 +91,21 @@ public class Http {
         return "";
     }
 
+    public String getOldResponseHeaders(Map<String, List<String>> oldResponseHeaders, String name) {
+        for (String key : oldResponseHeaders.keySet()) {
+            if (name == null) {
+                for (String map : oldResponseHeaders.get(key)) {
+                    return map;
+                }
+            } else {
+                for (String map : oldResponseHeaders.get(name)) {
+                    return map;
+                }
+            }
+        }
+        return "";
+    }
+
     public String doCommon(String httpUrl, Object param, String method) {
         StringBuffer result = new StringBuffer();
         //连接
