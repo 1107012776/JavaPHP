@@ -5,6 +5,8 @@ import com.javaPHP.base.Function;
 import com.javaPHP.base.FileUtil;
 import com.javaPHP.base.Http;
 
+import java.lang.Integer;
+
 public class PHP {
 
     protected static Function function = new Function();
@@ -59,6 +61,10 @@ public class PHP {
 
     public static String substr(String oldStr, int beginIndex) {
         return function.substr(oldStr, beginIndex);
+    }
+
+    public static Integer strlen(String str) {
+        return str.length();
     }
 
     public static Http createHttpClient() {

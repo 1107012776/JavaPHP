@@ -96,13 +96,40 @@ public class Http {
                 }
             }
             String paramBuild = "";
-            if (param != null && param instanceof Map) {
-                Map<String, String> paramMap = (Map<String, String>) param;
-                for (String key : paramMap.keySet()) {
-                    if (paramBuild.equals("")) {
-                        paramBuild += key + "=" + URLEncoder.encode(paramMap.get(key));
-                    } else {
-                        paramBuild += "&" + key + "=" + URLEncoder.encode(paramMap.get(key));
+            if (connection.getRequestProperty("Content-Type") != null
+                    && connection.getRequestProperty("Content-Type").indexOf("application/json") >= 0) {
+                if (param != null && param instanceof Map) {
+                    Map<String, Object> paramMap = (Map<String, Object>) param;
+                    for (String key : paramMap.keySet()) {
+                        String val = "";
+                        Object value = paramMap.get(key);
+                        if (value != null && value instanceof String) {
+                            val = "\"" + value.toString() + "\"";
+                        } else if (value == null) {
+                            val = null;
+                        } else {
+                            val = value.toString();
+                        }
+                        if (paramBuild.equals("")) {
+                            paramBuild += "{\"" + key + "\":" + val + ",";
+                        } else {
+                            paramBuild += "\"" + key + "\":" + val + ",";
+                        }
+                    }
+                    if (!paramBuild.equals("")) {
+                        paramBuild = PHP.substr(paramBuild, 0, PHP.strlen(paramBuild) - 1);
+                        paramBuild += "}";
+                    }
+                }
+            } else {
+                if (param != null && param instanceof Map) {
+                    Map<String, Object> paramMap = (Map<String, Object>) param;
+                    for (String key : paramMap.keySet()) {
+                        if (paramBuild.equals("")) {
+                            paramBuild += key + "=" + URLEncoder.encode(paramMap.get(key).toString());
+                        } else {
+                            paramBuild += "&" + key + "=" + URLEncoder.encode(paramMap.get(key).toString());
+                        }
                     }
                 }
             }

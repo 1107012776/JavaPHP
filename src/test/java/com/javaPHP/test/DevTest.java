@@ -77,17 +77,29 @@ public class DevTest {
 
     @org.junit.Test
     public void testHttpClient() {
-        Http client = PHP.createHttpClient();
+
         Map<String, String> header = new HashMap<String, String>();
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("username", PHP.file_get_contents(projectPath + "\\dev\\username.txt"));
         param.put("password", PHP.file_get_contents(projectPath + "\\dev\\password.txt"));
         header.put("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-        client.setHeaders(header);
-        String message = client.doPost(PHP.file_get_contents(projectPath + "\\dev\\url.txt"), param);
+        String message = "";
+/*      message = client.doPost(PHP.file_get_contents(projectPath + "\\dev\\url.txt"), param);
         PHP.print_r(message);
         client = PHP.createHttpClient();
         message = client.doGet(PHP.file_get_contents(projectPath + "\\dev\\first_url.txt"));
+        PHP.print_r(message);*/
+        Http client = PHP.createHttpClient();
+        client.setHeaders(header);
+        message = client.doPost(PHP.file_get_contents(projectPath + "\\dev\\cansu.txt"), param);
+        PHP.print_r(message);
+        client = PHP.createHttpClient();
+        header = new HashMap<String, String>();
+        header.put("Content-Type", "application/json; charset=UTF-8");
+        client.setHeaders(header);
+        message = client.doPut(PHP.file_get_contents(projectPath + "\\dev\\cansu.txt"), param);
         PHP.print_r(message);
     }
 }
+
+
