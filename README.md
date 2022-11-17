@@ -130,7 +130,7 @@ public class DevTest {
     public void testHttpClientUpload() {
         Map<String, Object> reqData = new HashMap<String, Object>();
         reqData.put("name", "uploadFile");
-        reqData.put("filename", "2020-11-10包医微信账单");
+        reqData.put("filename", "2020账单");
         Http client = PHP.createHttpClient();
         Map<String, String> fileMap = new HashMap<String, String>();
         fileMap.put("key", "uploadFile");

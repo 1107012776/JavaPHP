@@ -320,7 +320,6 @@ public class Http {
             // 获取表单中上传附件的数据，写入到输出流对象（根据上面分析的抓包的内容格式拼凑字符串）；
             if (body_data != null && body_data.length > 0) {
                 dos.writeBytes(PREFIX + BOUNDARY + NEWLINE);// 像请求体中写分割线，就是前缀+分界线+换行
-                String fileName = "2020-11-10包医微信账单";
                 // 格式是:Content-Disposition: form-data; name="请求参数名"; filename="文件名"
                 // 我这里吧请求的参数名写成了uploadFile，是死的，实际应用要根据自己的情况修改
                 // 不要忘了换行
