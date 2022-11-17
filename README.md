@@ -125,6 +125,19 @@ public class DevTest {
         PHP.print_r(client.getResponseHeaders());
         PHP.print_r(client.getResponseHeaders("Server"));
     }
+
+    @org.junit.Test
+    public void testHttpClientUpload() {
+        Map<String, Object> reqData = new HashMap<String, Object>();
+        reqData.put("name", "uploadFile");
+        reqData.put("filename", "2020-11-10包医微信账单");
+        Http client = PHP.createHttpClient();
+        Map<String, String> fileMap = new HashMap<String, String>();
+        fileMap.put("key", "uploadFile");
+        fileMap.put("path", projectPath + "\\pom.xml");
+        String message = client.upload(PHP.file_get_contents(projectPath + "\\dev\\cansu.txt"), fileMap, reqData);
+        PHP.print_r(message);
+    }
 }
 ```
 
