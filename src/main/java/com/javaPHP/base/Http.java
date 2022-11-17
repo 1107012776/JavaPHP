@@ -297,6 +297,11 @@ public class Http {
             httpConn.setRequestProperty(
                     "User-Agent",
                     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)");
+            for (Map<String, String> map : headers) {
+                for (String key : map.keySet()) {
+                    httpConn.setRequestProperty(key, map.get(key));
+                }
+            }
             // 调用HttpURLConnection对象的connect()方法，建立与服务器的真实连接；
             httpConn.connect();
 
