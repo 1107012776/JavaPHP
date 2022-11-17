@@ -259,7 +259,7 @@ public class Http {
         final String PREFIX = "--";
         final String BOUNDARY = "#";
 
-        HttpURLConnection httpConn = null;
+        HttpURLConnection connection = null;
         BufferedInputStream bis = null;
         DataOutputStream dos = null;
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -279,34 +279,34 @@ public class Http {
             // 实例化URL对象。调用URL有参构造方法，参数是一个url地址；
             URL urlObj = new URL(serverUrl);
             // 调用URL对象的openConnection()方法，创建HttpURLConnection对象；
-            httpConn = (HttpURLConnection) urlObj.openConnection();
+            connection = (HttpURLConnection) urlObj.openConnection();
             // 调用HttpURLConnection对象setDoOutput(true)、setDoInput(true)、setRequestMethod("POST")；
-            httpConn.setDoInput(true);
-            httpConn.setDoOutput(true);
-            httpConn.setRequestMethod("POST");
+            connection.setDoInput(true);
+            connection.setDoOutput(true);
+            connection.setRequestMethod("POST");
             // 设置Http请求头信息；（Accept、Connection、Accept-Encoding、Cache-Control、Content-Type、User-Agent）
-            httpConn.setUseCaches(false);
-            httpConn.setRequestProperty("Connection", "Keep-Alive");
-            httpConn.setRequestProperty("Accept", "*/*");
-            httpConn.setRequestProperty("Accept-Encoding", "gzip, deflate");
-            httpConn.setRequestProperty("Cache-Control", "no-cache");
+            connection.setUseCaches(false);
+            connection.setRequestProperty("Connection", "Keep-Alive");
+            connection.setRequestProperty("Accept", "*/*");
+            connection.setRequestProperty("Accept-Encoding", "gzip, deflate");
+            connection.setRequestProperty("Cache-Control", "no-cache");
             // 这个比较重要，按照上面分析的拼装出Content-Type头的内容
-            httpConn.setRequestProperty("Content-Type",
+            connection.setRequestProperty("Content-Type",
                     "multipart/form-data; boundary=" + BOUNDARY);
             // 这个参数可以参考浏览器中抓出来的内容写，用chrome或者Fiddler抓吧看看就行
-            httpConn.setRequestProperty(
+            connection.setRequestProperty(
                     "User-Agent",
                     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)");
             for (Map<String, String> map : headers) {
                 for (String key : map.keySet()) {
-                    httpConn.setRequestProperty(key, map.get(key));
+                    connection.setRequestProperty(key, map.get(key));
                 }
             }
             // 调用HttpURLConnection对象的connect()方法，建立与服务器的真实连接；
-            httpConn.connect();
+            connection.connect();
 
             // 调用HttpURLConnection对象的getOutputStream()方法构建输出流对象；
-            dos = new DataOutputStream(httpConn.getOutputStream());
+            dos = new DataOutputStream(connection.getOutputStream());
             // 获取表单中上传控件之外的控件数据，写入到输出流对象（根据上面分析的抓包的内容格式拼凑字符串）；
             if (reqData != null && !reqData.isEmpty()) { // 这时请求中的普通参数，键值对类型的，相当于上面分析的请求中的username，可能有多个
                 for (Map.Entry<String, Object> entry : reqData.entrySet()) {
@@ -344,8 +344,8 @@ public class Http {
             buffer = new byte[8 * 1024];
             c = 0;
             // 调用HttpURLConnection对象的getResponseCode()获取客户端与服务器端的连接状态码。如果是200，则执行以下操作，否则返回null；
-            if (httpConn.getResponseCode() == 200) {
-                bis = new BufferedInputStream(httpConn.getInputStream());
+            if (connection.getResponseCode() == 200) {
+                bis = new BufferedInputStream(connection.getInputStream());
                 while ((c = bis.read(buffer)) != -1) {
                     baos.write(buffer, 0, c);
                     baos.flush();
@@ -363,7 +363,7 @@ public class Http {
                     bis.close();
                 if (baos != null)
                     baos.close();
-                httpConn.disconnect();
+                connection.disconnect();
             } catch (Exception e) {
                 e.printStackTrace();
             }
