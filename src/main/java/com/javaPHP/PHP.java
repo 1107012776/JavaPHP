@@ -6,6 +6,7 @@ import com.javaPHP.base.FileUtil;
 import com.javaPHP.base.Http;
 
 import java.lang.Integer;
+import java.util.Arrays;
 
 public class PHP {
 
@@ -37,6 +38,16 @@ public class PHP {
 
     public static Object[] array_merge(Object[] arr, Object[] arr1) {
         return array.array_merge(arr, arr1);
+    }
+
+    public static Object[] array_filter(Object[] arr) {
+        return array.array_filter(arr);
+    }
+
+    public static String[] array_filter(String[] arr) {
+        Object[] arr1 = array.array_filter(arr);
+        String[] arr2 = Arrays.asList(arr1).toArray(new String[arr1.length]);
+        return arr2;
     }
 
     public static String file_get_contents(String path) {
