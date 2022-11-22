@@ -23,7 +23,7 @@ public class Array {
      * @param arr
      * @return
      */
-    public static Object[] array_filter(Object[] arr) {
+    public Object[] array_filter(Object[] arr) {
         //创建一个集合
         List<Object> list = new ArrayList();
         //遍历数组往集合里存元素
