@@ -50,6 +50,13 @@ public class DevTest {
     }
 
     @org.junit.Test
+    public void testArrayUnique() {
+        String[] arr1 = new String[]{"a", "b", "c", null, "", "c"};
+        String[] arr3 = PHP.array_unique(arr1);
+        PHP.print_r(arr3);
+    }
+
+    @org.junit.Test
     public void testFileGetContents() {
         String content = PHP.file_get_contents(this.getClass().getResource("/").getPath() + "/com/javaPHP/test/DevTest.class");
         PHP.print_r(content);

@@ -50,6 +50,16 @@ public class PHP {
         return arr2;
     }
 
+    public static Object[] array_unique(Object[] arr) {
+        return array.array_unique(arr);
+    }
+
+    public static String[] array_unique(String[] arr) {
+        Object[] arr1 = array.array_unique(arr);
+        String[] arr2 = Arrays.asList(arr1).toArray(new String[arr1.length]);
+        return arr2;
+    }
+
     public static String file_get_contents(String path) {
         return fileUtil.readFileByChars(path);
     }

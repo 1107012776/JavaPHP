@@ -46,4 +46,26 @@ public class Array {
         Object[] newArr = (Object[]) list.toArray(new Object[0]);
         return newArr;
     }
+
+    /**
+     * 去重并去除空字符串或者null
+     *
+     * @param arr
+     * @return
+     */
+    public Object[] array_unique(Object[] arr) {
+        //创建一个集合
+        List<Object> list = new ArrayList();
+        //遍历数组往集合里存元素
+        for (int i = 0; i < arr.length; i++) {
+            //如果集合里面没有相同的元素才往里存
+            if (!list.contains(arr[i])) {
+                list.add(arr[i]);
+            }
+        }
+        //toArray()方法会返回一个包含集合所有元素的String类型数组
+        Object[] newArr = (Object[]) list.toArray(new Object[0]);
+        return newArr;
+    }
+
 }
