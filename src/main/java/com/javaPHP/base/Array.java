@@ -48,7 +48,7 @@ public class Array {
     }
 
     /**
-     * 去重并去除空字符串或者null
+     * 去重并去除null
      *
      * @param arr
      * @return
