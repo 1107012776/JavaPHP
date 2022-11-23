@@ -48,7 +48,7 @@ public class Array {
     }
 
     /**
-     * 去重并去除null
+     * 去重
      *
      * @param arr
      * @return
