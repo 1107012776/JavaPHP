@@ -172,7 +172,7 @@ public class DevTest {
 
 
     @org.junit.Test
-    public void testPregMatche() {
+    public void testPregMatch() {
         PHP.print_r(PHP.preg_match(".*b.*", "abc"));
         Matches matches = new Matches();
         PHP.print_r(PHP.preg_match_all("(\\D*)(\\d+)(.*)", "This order was placed for QT3000! OK?", matches));
