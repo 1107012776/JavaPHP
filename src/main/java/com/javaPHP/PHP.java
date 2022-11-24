@@ -4,6 +4,7 @@ import com.javaPHP.base.Array;
 import com.javaPHP.base.Function;
 import com.javaPHP.base.FileUtil;
 import com.javaPHP.base.Http;
+import com.javaPHP.entity.Matches;
 
 import java.lang.Integer;
 import java.util.Arrays;
@@ -27,6 +28,14 @@ public class PHP {
 
     public static void print_r(Object obj) {
         function.print_r(obj);
+    }
+
+    public static boolean preg_match(String pattern, String content) {
+        return function.preg_match(pattern, content);
+    }
+
+    public static Integer preg_match_all(String pattern, String content, Matches matches) {
+        return function.preg_match_all(pattern, content, matches);
     }
 
     public static String str_replace(String oldStr, String newStr, String targetValue) {

@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
+import com.javaPHP.entity.*;
 
 public class DevTest {
 
@@ -143,6 +144,15 @@ public class DevTest {
         fileMap.put("path", projectPath + "\\pom.xml");
         String message = client.upload(PHP.file_get_contents(projectPath + "\\dev\\cansu.txt"), fileMap, reqData);
         PHP.print_r(message);
+    }
+
+
+    @org.junit.Test
+    public void testPregMatche() {
+        PHP.print_r(PHP.preg_match(".*b.*", "abc"));
+        Matches matches = new Matches();
+        PHP.print_r(PHP.preg_match_all("(\\D*)(\\d+)(.*)", "This order was placed for QT3000! OK?", matches));
+        PHP.print_r(matches);
     }
 
 }
