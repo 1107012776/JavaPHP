@@ -32,6 +32,10 @@ import com.javaPHP.base.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
+
+import com.javaPHP.entity.*;
 
 public class DevTest {
 
@@ -62,6 +66,32 @@ public class DevTest {
         String[] arr1 = new String[]{"a", "b", "c"};
         String[] arr2 = new String[]{"a", "b", "c", "d"};
         String[] arr3 = (String[]) PHP.array_merge(arr1, arr2);
+        PHP.print_r(arr3);
+    }
+
+    @org.junit.Test
+    public void testArrayFilter() {
+        String[] arr1 = new String[]{"a", "b", "c", null, ""};
+        String[] arr3 = PHP.array_filter(arr1);
+        PHP.print_r(arr3);
+    }
+
+    @org.junit.Test
+    public void testArrayUnique() {
+        String[] arr1 = new String[]{"a", "b", "c", null, "", "c"};
+        String[] arr3 = PHP.array_unique(arr1);
+        PHP.print_r(arr3);
+    }
+
+    @org.junit.Test
+    public void testListToArr() {
+        List<String> person = new ArrayList<String>();
+        person.add("jackie");
+        person.add("peter");
+        person.add("annie");
+        person.add("martin");
+        person.add("marry");
+        String[] arr3 = PHP.listToStrArr(person);
         PHP.print_r(arr3);
     }
 
@@ -126,6 +156,7 @@ public class DevTest {
         PHP.print_r(client.getResponseHeaders("Server"));
     }
 
+
     @org.junit.Test
     public void testHttpClientUpload() {
         Map<String, Object> reqData = new HashMap<String, Object>();
@@ -138,6 +169,19 @@ public class DevTest {
         String message = client.upload(PHP.file_get_contents(projectPath + "\\dev\\cansu.txt"), fileMap, reqData);
         PHP.print_r(message);
     }
+
+
+    @org.junit.Test
+    public void testPregMatche() {
+        PHP.print_r(PHP.preg_match(".*b.*", "abc"));
+        Matches matches = new Matches();
+        PHP.print_r(PHP.preg_match_all("(\\D*)(\\d+)(.*)", "This order was placed for QT3000! OK?", matches));
+        PHP.print_r(matches);
+    }
+
 }
+
+
+
 ```
 
