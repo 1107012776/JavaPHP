@@ -7,6 +7,7 @@ import com.javaPHP.base.Http;
 
 import java.lang.Integer;
 import java.util.Arrays;
+import java.util.List;
 
 public class PHP {
 
@@ -90,5 +91,15 @@ public class PHP {
 
     public static Http createHttpClient() {
         return new Http();
+    }
+
+    /**
+     * 转为String数组
+     *
+     * @param arr
+     * @return
+     */
+    public static String[] listToStrArr(Object arr) {
+        return array.listToStrArr(arr);
     }
 }

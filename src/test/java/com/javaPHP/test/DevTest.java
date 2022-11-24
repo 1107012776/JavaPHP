@@ -9,6 +9,8 @@ import com.javaPHP.base.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 
 public class DevTest {
 
@@ -53,6 +55,18 @@ public class DevTest {
     public void testArrayUnique() {
         String[] arr1 = new String[]{"a", "b", "c", null, "", "c"};
         String[] arr3 = PHP.array_unique(arr1);
+        PHP.print_r(arr3);
+    }
+
+    @org.junit.Test
+    public void testListToArr() {
+        List<String> person = new ArrayList<String>();
+        person.add("jackie");
+        person.add("peter");
+        person.add("annie");
+        person.add("martin");
+        person.add("marry");
+        String[] arr3 = PHP.listToStrArr(person);
         PHP.print_r(arr3);
     }
 

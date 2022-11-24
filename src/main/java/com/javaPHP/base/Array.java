@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.javaPHP.PHP;
+
 public class Array {
     public boolean in_array(String targetValue, String[] arr) {
         return Arrays.asList(arr).contains(targetValue);
@@ -68,4 +70,80 @@ public class Array {
         return newArr;
     }
 
+    /**
+     * 转为String数组
+     *
+     * @param arr
+     * @return
+     */
+    public String[] listToStrArr(Object arr) {
+        if (arr instanceof List) {
+            for (Object d : (List<Object>) arr) {
+                if (d instanceof Integer) {
+                    return getListIntegerToStrArr((List<Integer>) arr);
+                }
+                if (d instanceof Long) {
+                    return getListLongToStrArr((List<Long>) arr);
+                }
+                if (d instanceof String) {
+                    return getListStringToStrArr((List<String>) arr);
+                }
+            }
+        }
+        return new String[0];  //空数组
+    }
+
+    /**
+     * 转为数组
+     *
+     * @param arr
+     * @return
+     */
+    protected String[] getListLongToStrArr(List<Long> arr) {
+        String arrStr = "";
+        for (Long a : arr) {
+            arrStr += "," + a.toString();
+        }
+        if (arrStr.equals("")) {
+            return new String[0];  //空数组
+        }
+        arrStr = PHP.substr(arrStr, 1);
+        return arrStr.split(",");
+    }
+
+    /**
+     * 转为数组
+     *
+     * @param arr
+     * @return
+     */
+    protected String[] getListIntegerToStrArr(List<Integer> arr) {
+        String arrStr = "";
+        for (Integer a : arr) {
+            arrStr += "," + a.toString();
+        }
+        if (arrStr.equals("")) {
+            return new String[0];  //空数组
+        }
+        arrStr = PHP.substr(arrStr, 1);
+        return arrStr.split(",");
+    }
+
+    /**
+     * 转为数组
+     *
+     * @param arr
+     * @return
+     */
+    protected String[] getListStringToStrArr(List<String> arr) {
+        String arrStr = "";
+        for (String a : arr) {
+            arrStr += "," + a;
+        }
+        if (arrStr.equals("")) {
+            return new String[0];  //空数组
+        }
+        arrStr = PHP.substr(arrStr, 1);
+        return arrStr.split(",");
+    }
 }
