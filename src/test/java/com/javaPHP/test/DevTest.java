@@ -156,6 +156,14 @@ public class DevTest {
         PHP.print_r(matches);
     }
 
+    @org.junit.Test
+    public void testEnv() {
+        Env config = PHP.createEnv(projectPath + "\\env.properties");
+        String value = config.get("log4j.appender.console.Encoding", null);
+        PHP.print_r(value);
+    }
+
+
 }
 
 

@@ -4,8 +4,10 @@ import com.javaPHP.base.Array;
 import com.javaPHP.base.Function;
 import com.javaPHP.base.FileUtil;
 import com.javaPHP.base.Http;
+import com.javaPHP.base.Env;
 import com.javaPHP.entity.Matches;
 
+import java.io.IOException;
 import java.lang.Integer;
 import java.util.Arrays;
 import java.util.List;
@@ -110,5 +112,18 @@ public class PHP {
      */
     public static String[] listToStrArr(Object arr) {
         return array.listToStrArr(arr);
+    }
+
+
+    public static Env createEnv(String configPath) {
+        try {
+            return new Env(configPath);
+        } catch (java.io.FileNotFoundException e) {
+            System.out.println(e.getStackTrace());
+            return null;
+        } catch (java.io.IOException e) {
+            System.out.println(e.getStackTrace());
+            return null;
+        }
     }
 }
