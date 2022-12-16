@@ -152,8 +152,25 @@ public class DevTest {
     public void testPregMatch() {
         PHP.print_r(PHP.preg_match(".*b.*", "abc"));
         Matches matches = new Matches();
-        PHP.print_r(PHP.preg_match_all("(\\D*)(\\d+)(.*)", "This order was placed for QT3000! OK?", matches));
+/*        PHP.print_r(PHP.preg_match_all("(\\D*)(\\d+)(.*)", "This order was placed for QT3000! OK?", matches));
+        PHP.print_r(matches);*/
+
+        PHP.print_r(PHP.preg_match_all("^0?(1[3-9]\\d{5})(\\d{4})", "18012323232", matches));
         PHP.print_r(matches);
+        matches = new Matches();
+        PHP.print_r(PHP.preg_match_all("^0?(1[3-9]\\d{5})(\\d{4})", "013683943885", matches));
+        PHP.print_r(matches);
+
+        matches = new Matches();
+        PHP.print_r(PHP.preg_match_all("^(0?\\d{3})\\d{6,8}$", "05923023123", matches));
+        PHP.print_r(matches);
+
+        matches = new Matches();
+        PHP.print_r(PHP.preg_match("^[2-9]\\d{6,7}$", "3023123"));
+        PHP.print_r(matches);
+
+        PHP.print_r(preg_match("^0?400\\d{7,}$", "4001028324"));
+
     }
 
     @org.junit.Test

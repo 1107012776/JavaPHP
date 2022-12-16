@@ -69,7 +69,7 @@ public class Function {
         Matcher m = r.matcher(content);
         if (m.find()) {
             Integer groupCount = m.groupCount();
-            for (int i = 0; i < groupCount; i++) {
+            for (int i = 0; i <= groupCount; i++) {
                 matches.add(m.group(i));
             }
             return groupCount;
