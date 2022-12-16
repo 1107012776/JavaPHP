@@ -171,6 +171,17 @@ public class DevTest {
 
         PHP.print_r(preg_match("^0?400\\d{7,}$", "4001028324"));
 
+        matches = new Matches();
+
+        if(PHP.preg_match_all("^(0?\\d{3})\\d{6,8}$", "51187220331", matches) > 0){
+            List<String> matchList = matches.getAll();
+            String number_fix =  matchList.get(1);
+            if (number_fix.length() == 3) {
+                number_fix = "0"+number_fix;
+            }
+            PHP.print_r(number_fix);
+        }
+
     }
 
     @org.junit.Test
