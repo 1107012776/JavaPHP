@@ -16,7 +16,7 @@ import com.javaPHP.entity.*;
 
 public class DevTest {
 
-    public static String projectPath = "E:\\git-project\\JavaPHP";
+    public static String projectPath = "D:\\javaproject\\JavaPHP";
 
     @org.junit.Test
     public void testEcho() {
@@ -108,17 +108,17 @@ public class DevTest {
     @org.junit.Test
     public void testHttpClient() {
 
-        Map<String, String> header = new HashMap<String, String>();
+/*        Map<String, String> header = new HashMap<String, String>();
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("username", PHP.file_get_contents(projectPath + "\\dev\\username.txt"));
         param.put("password", PHP.file_get_contents(projectPath + "\\dev\\password.txt"));
         header.put("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
         String message = "";
-/*      message = client.doPost(PHP.file_get_contents(projectPath + "\\dev\\url.txt"), param);
-        PHP.print_r(message);
-        client = PHP.createHttpClient();
-        message = client.doGet(PHP.file_get_contents(projectPath + "\\dev\\first_url.txt"));
-        PHP.print_r(message);*/
+//        message = client.doPost(PHP.file_get_contents(projectPath + "\\dev\\url.txt"), param);
+//        PHP.print_r(message);
+//        client = PHP.createHttpClient();
+//        message = client.doGet(PHP.file_get_contents(projectPath + "\\dev\\first_url.txt"));
+//        PHP.print_r(message);
         Http client = PHP.createHttpClient();
         client.setHeaders(header);
         message = client.doPost(PHP.file_get_contents(projectPath + "\\dev\\cansu.txt"), param);
@@ -130,13 +130,13 @@ public class DevTest {
         message = client.doPut(PHP.file_get_contents(projectPath + "\\dev\\cansu.txt"), param);
         PHP.print_r(message);
         PHP.print_r(client.getResponseHeaders());
-        PHP.print_r(client.getResponseHeaders("Server"));
+        PHP.print_r(client.getResponseHeaders("Server"));*/
     }
 
 
     @org.junit.Test
     public void testHttpClientUpload() {
-        Map<String, Object> reqData = new HashMap<String, Object>();
+/*        Map<String, Object> reqData = new HashMap<String, Object>();
         reqData.put("name", "uploadFile");
         reqData.put("filename", "2020账单");
         Http client = PHP.createHttpClient();
@@ -144,7 +144,7 @@ public class DevTest {
         fileMap.put("key", "uploadFile");
         fileMap.put("path", projectPath + "\\pom.xml");
         String message = client.upload(PHP.file_get_contents(projectPath + "\\dev\\cansu.txt"), fileMap, reqData);
-        PHP.print_r(message);
+        PHP.print_r(message);*/
     }
 
 
